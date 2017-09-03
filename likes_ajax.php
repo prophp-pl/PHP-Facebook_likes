@@ -81,7 +81,6 @@ elseif ($action === 'save') {
         $sql = "INSERT INTO `likes` (`page_id`, `user`, $columnName) VALUES (?, INET_ATON(?), 1)";
         $sql.= "ON DUPLICATE KEY UPDATE $columnName = NOT $columnName;";
 
-//        $sql = "UPDATE `likes` SET $columnName = NOT $columnName WHERE `page_id` = ? AND INET_NTOA(`user`) = ?";
         $sth = $dbh->prepare($sql);
         $sth->execute([
             $pageId,
